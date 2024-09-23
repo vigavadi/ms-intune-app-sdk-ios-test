@@ -25,6 +25,15 @@ let package = Package(
             linkerSettings: [
                 .linkedFramework("AudioToolbox"),
                 .linkedFramework("CoreServices"),
+                .linkedFramework("ImageIO"),
+                .linkedFramework("LocalAuthentication"),
+                .linkedFramework("MessageUI"),
+                .linkedFramework("QuartzCore"),
+                .linkedFramework("Security"),
+                .linkedFramework("MetricKit"),
+                .linkedFramework("MessageUI"),
+                .linkedFramework("SystemConfiguration"),
+                .linkedFramework("WebKit")
             ]
         ),
         // Local Binary Packages
