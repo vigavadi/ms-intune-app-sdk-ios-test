@@ -10,32 +10,38 @@ let package = Package(
         .library(name: "IntuneMAMSwift",
                  targets: ["IntuneMAMSwift", "IntuneMAMSwiftStub"]),
         .library(name: "IntuneMAMStatic",
-                 targets: ["IntuneMAMStaticWrapper", "IntuneMAMSwiftStub"]),
+                 targets: ["IntuneMAMStaticTarget", "IntuneMAMSwiftStub"]),
         .library(name: "IntuneMAMTelemetry",
                  targets: ["IntuneMAMTelemetry"]),
         .library(name: "libIntuneMAMSwiftFileProvider",
                  targets: ["libIntuneMAMSwiftFileProvider", "IntuneMAMSwiftStub"])
     ],
     targets: [
+        
         .target(
-            name: "IntuneMAMStaticWrapper",
-            dependencies: [
-                .target(name: "IntuneMAMStatic")
-            ],
-            path: "Sources",
-            linkerSettings: [
-                .linkedFramework("AudioToolbox"),
-                .linkedFramework("CoreServices"),
-                .linkedFramework("ImageIO"),
-                .linkedFramework("LocalAuthentication"),
-                .linkedFramework("MessageUI"),
-                .linkedFramework("QuartzCore"),
-                .linkedFramework("Security"),
-                .linkedFramework("MetricKit"),
-                .linkedFramework("MessageUI"),
-                .linkedFramework("SystemConfiguration"),
-                .linkedFramework("WebKit")
-            ]
+          name: "IntuneMAMStaticTarget",
+          dependencies: [.target(name: "IntuneMAMStaticWrapper", condition: .when(platforms: [.iOS]))],
+          path: "IntuneMAMStaticTarget"
+        ),
+        .target(
+          name: "IntuneMAMStaticWrapper",
+          dependencies: [
+            .target(name: "IntuneMAMStatic", condition: .when(platforms: [.iOS]))
+          ],
+          path: "IntuneMAMStaticWrapper",
+          linkerSettings: [
+            .linkedFramework("AudioToolbox"),
+            .linkedFramework("CoreServices"),
+            .linkedFramework("ImageIO"),
+            .linkedFramework("LocalAuthentication"),
+            .linkedFramework("MessageUI"),
+            .linkedFramework("QuartzCore"),
+            .linkedFramework("Security"),
+            .linkedFramework("MetricKit"),
+            .linkedFramework("MessageUI"),
+            .linkedFramework("SystemConfiguration"),
+            .linkedFramework("WebKit")
+          ]
         ),
         // Local Binary Packages
         .binaryTarget(name: "IntuneMAMSwiftStub",
