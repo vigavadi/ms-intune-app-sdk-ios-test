@@ -21,14 +21,14 @@ let package = Package(
         .target(
           name: "IntuneMAMStaticTarget",
           dependencies: [.target(name: "IntuneMAMStaticWrapper", condition: .when(platforms: [.iOS]))],
-          path: "IntuneMAMStaticTarget"
+          path: "."
         ),
         .target(
           name: "IntuneMAMStaticWrapper",
           dependencies: [
             .target(name: "IntuneMAMStatic", condition: .when(platforms: [.iOS]))
           ],
-          path: "IntuneMAMStaticWrapper",
+          path: ".",
           linkerSettings: [
             .linkedFramework("AudioToolbox"),
             .linkedFramework("CoreServices"),
