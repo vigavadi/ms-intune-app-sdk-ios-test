@@ -22,7 +22,7 @@ let package = Package(
             dependencies: [
                 .target(name: "IntuneMAMStatic")
             ],
-            path: "IntuneMAMStaticWrapper",
+            path: "Sources",
             linkerSettings: [
                 .linkedFramework("AudioToolbox"),
                 .linkedFramework("CoreServices"),
