@@ -10,7 +10,7 @@ let package = Package(
         .library(name: "IntuneMAMSwift",
                  targets: ["IntuneMAMSwift", "IntuneMAMSwiftStub"]),
         .library(name: "IntuneMAMStatic",
-                 targets: ["IntuneMAMStaticWrapper", "IntuneMAMSwiftStub"]),
+                 targets: ["IntuneMAMStatic", "IntuneMAMStaticDependencies", IntuneMAMSwiftStub"]),
         .library(name: "IntuneMAMTelemetry",
                  targets: ["IntuneMAMTelemetry"]),
         .library(name: "libIntuneMAMSwiftFileProvider",
@@ -18,10 +18,7 @@ let package = Package(
     ],
     targets: [
         .target(
-          name: "IntuneMAMStaticWrapper",
-          dependencies: [
-            .target(name: "IntuneMAMStatic", condition: .when(platforms: [.iOS]))
-          ],
+          name: "IntuneMAMStaticDependencies",
           path: ".",
           linkerSettings: [
             .linkedFramework("AudioToolbox"),
