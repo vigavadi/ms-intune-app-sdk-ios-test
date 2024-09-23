@@ -10,19 +10,13 @@ let package = Package(
         .library(name: "IntuneMAMSwift",
                  targets: ["IntuneMAMSwift", "IntuneMAMSwiftStub"]),
         .library(name: "IntuneMAMStatic",
-                 targets: ["IntuneMAMStaticTarget", "IntuneMAMSwiftStub"]),
+                 targets: ["IntuneMAMStaticWrapper", "IntuneMAMSwiftStub"]),
         .library(name: "IntuneMAMTelemetry",
                  targets: ["IntuneMAMTelemetry"]),
         .library(name: "libIntuneMAMSwiftFileProvider",
                  targets: ["libIntuneMAMSwiftFileProvider", "IntuneMAMSwiftStub"])
     ],
     targets: [
-        
-        .target(
-          name: "IntuneMAMStaticTarget",
-          dependencies: [.target(name: "IntuneMAMStaticWrapper", condition: .when(platforms: [.iOS]))],
-          path: "."
-        ),
         .target(
           name: "IntuneMAMStaticWrapper",
           dependencies: [
