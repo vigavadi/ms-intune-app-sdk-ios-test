@@ -22,6 +22,7 @@ let package = Package(
             dependencies: [
                 .target(name: "IntuneMAMStatic")
             ],
+            path: "IntuneMAMStaticWrapper",
             linkerSettings: [
                 .linkedFramework("AudioToolbox"),
                 .linkedFramework("CoreServices"),
@@ -34,8 +35,7 @@ let package = Package(
                 .linkedFramework("MessageUI"),
                 .linkedFramework("SystemConfiguration"),
                 .linkedFramework("WebKit")
-            ],
-            path: "Sources/"
+            ]
         ),
         // Local Binary Packages
         .binaryTarget(name: "IntuneMAMSwiftStub",
