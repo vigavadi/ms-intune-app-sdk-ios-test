@@ -34,7 +34,8 @@ let package = Package(
                 .linkedFramework("MessageUI"),
                 .linkedFramework("SystemConfiguration"),
                 .linkedFramework("WebKit")
-            ]
+            ],
+            path: "Sources/"
         ),
         // Local Binary Packages
         .binaryTarget(name: "IntuneMAMSwiftStub",
