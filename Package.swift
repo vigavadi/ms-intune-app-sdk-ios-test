@@ -19,6 +19,7 @@ let package = Package(
     targets: [
         .target(
           name: "IntuneMAMStaticDependencies",
+          dependencies: [],
           path: ".",
           linkerSettings: [
             .linkedFramework("AudioToolbox"),
