@@ -17,6 +17,16 @@ let package = Package(
                  targets: ["libIntuneMAMSwiftFileProvider", "IntuneMAMSwiftStub"])
     ],
     targets: [
+        .target(
+            name: "IntuneMAMStatic",
+            dependencies: [
+                .target(name: "IntuneMAMStaticBinary")
+            ],
+            linkerSettings: [
+                .linkedFramework("AudioToolbox"),
+                .linkedFramework("CoreServices"),
+            ]
+        ),
         // Local Binary Packages
         .binaryTarget(name: "IntuneMAMSwiftStub",
                       path: "./IntuneMAMSwiftStub.xcframework"
@@ -24,7 +34,7 @@ let package = Package(
         .binaryTarget(name: "IntuneMAMSwift",
                       path: "./IntuneMAMSwift.xcframework"
                      ),
-        .binaryTarget(name: "IntuneMAMStatic",
+        .binaryTarget(name: "IntuneMAMStaticBinary",
                       path: "./IntuneMAMStatic.xcframework"
                      ),
         .binaryTarget(name: "IntuneMAMTelemetry",
